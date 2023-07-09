@@ -4,17 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "esno ./src/index.ts"
+    "start": "esno ./src/index.ts",
+    "gen-html": "esno ./src/website/gen-md.cjs",
+    "format":"prettier ./src/* --write"
   },
   "keywords": [],
   "author": "",
+  "type": "module",
   "license": "ISC",
   "dependencies": {
     "@mdx-js/esbuild": "^2.3.0",
+    "@mdx-js/mdx": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
     "axios": "^1.4.0",
     "esbuild": "^0.18.11",
     "fs-extra": "^11.1.1",
+    "gray-matter": "^4.0.3",
     "lodash": "^4.17.21",
+    "prettier": "^3.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rss-parser": "^3.13.0"
   },
   "devDependencies": {
