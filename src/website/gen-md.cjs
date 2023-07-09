@@ -46,7 +46,7 @@ async function genFeedMD() {
     entryPoints: [websitePath],
     bundle: true,
     minify: true,
-    outdir: path.join(rootPath, 'src', 'website', 'dist'),
+    outdir: path.join(rootPath, 'docs'),
     jsx: "automatic",
   });
 }
