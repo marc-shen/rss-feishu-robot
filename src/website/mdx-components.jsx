@@ -151,6 +151,36 @@ function _createMdxContent(props) {
         href: "https://javascriptweekly.com/issues/643",
         children: "11 years of JavaScript on top"
       })
+    }), "\n", _jsx(_components.p, {
+      children: _jsx(_components.a, {
+        href: "https:/mxstbr.com/thoughts/tailwind",
+        children: "Why I Love Tailwind"
+      })
+    }), "\n", _jsx(_components.p, {
+      children: _jsx(_components.a, {
+        href: "https:/mxstbr.com/thoughts/margin",
+        children: "Margin considered harmful"
+      })
+    }), "\n", _jsx(_components.p, {
+      children: _jsx(_components.a, {
+        href: "https:/mxstbr.com/thoughts/gatsby",
+        children: "I am joining Gatsby"
+      })
+    }), "\n", _jsx(_components.p, {
+      children: _jsx(_components.a, {
+        href: "https:/mxstbr.com/thoughts/css-in-js",
+        children: "Why I Write CSS in JavaScript"
+      })
+    }), "\n", _jsx(_components.p, {
+      children: _jsx(_components.a, {
+        href: "https:/mxstbr.com/thoughts/tech-choice-regrets-at-spectrum",
+        children: "Tech Choices I Regret at Spectrum"
+      })
+    }), "\n", _jsx(_components.p, {
+      children: _jsx(_components.a, {
+        href: "https:/mxstbr.com/thoughts/streaming-ssr",
+        children: "Streaming Server-Side Rendering and Caching at Spectrum"
+      })
     })]
   });
 }
