@@ -131,6 +131,26 @@ function _createMdxContent(props) {
         href: "https://blog.skk.moe/post/how-to-write-for-seo/",
         children: "如何写一篇同时面向人和搜索引擎的文章"
       })
+    }), "\n", _jsx(_components.p, {
+      children: _jsx(_components.a, {
+        href: "https://javascriptweekly.com/issues/646",
+        children: "CommonJS, we love you, we love you not.."
+      })
+    }), "\n", _jsx(_components.p, {
+      children: _jsx(_components.a, {
+        href: "https://javascriptweekly.com/issues/645",
+        children: "This is a doozy of an issue"
+      })
+    }), "\n", _jsx(_components.p, {
+      children: _jsx(_components.a, {
+        href: "https://javascriptweekly.com/issues/644",
+        children: "Svelte 4 released"
+      })
+    }), "\n", _jsx(_components.p, {
+      children: _jsx(_components.a, {
+        href: "https://javascriptweekly.com/issues/643",
+        children: "11 years of JavaScript on top"
+      })
     })]
   });
 }

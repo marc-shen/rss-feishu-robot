@@ -10,7 +10,6 @@
   },
   "keywords": [],
   "author": "",
-  "type": "module",
   "license": "ISC",
   "dependencies": {
     "@mdx-js/esbuild": "^2.3.0",

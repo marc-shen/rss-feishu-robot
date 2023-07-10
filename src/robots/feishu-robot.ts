@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FEISHU_ROBOT_CALLBACK_URL } from "./constance";
+import { FEISHU_ROBOT_CALLBACK_URL } from "../constance";
 
 const instance = axios.create({ baseURL: FEISHU_ROBOT_CALLBACK_URL });
 
@@ -43,4 +43,15 @@ export async function sendPostMessage(message: any): Promise<any> {
       },
     },
   });
+}
+
+
+export const feishuFormatData = (data: FeedResType[]) => {
+  return data
+    .map((item, index) => ({
+      tag: "a",
+      text: `${index + 1} : ${item.title}`,
+      href: item.link,
+    }))
+    .map((item) => [item]);
 }

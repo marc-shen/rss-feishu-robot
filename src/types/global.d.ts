@@ -18,3 +18,9 @@ declare interface DetailFeedType {
   id: string;
   isoDate: string;
 }
+
+declare interface FormatDataType {
+  tag: string;
+  text: string;
+  href: string;
+}

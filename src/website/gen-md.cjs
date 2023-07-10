@@ -21,7 +21,6 @@ async function genFeedMD() {
 
   const jsx = await compile(mdContent);
 
-  console.log("jsx", jsx)
   fs.writeFileSync(path.join(rootPath, 'src','website', "mdx-components.jsx"), String(jsx));
   const renderCode = `
     import react from 'react'

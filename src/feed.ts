@@ -3,7 +3,7 @@ import path from "path";
 import { SAVED_DATA_PATH_NAME, ORIGIN_FEED_DATA_PATH_NAME } from "./constance";
 import { flatten, isEmpty, uniqBy } from "lodash";
 import Parser from "rss-parser";
-import { sendPostMessage } from "./robot";
+import { sendPostMessage } from "./robots/feishu-robot";
 const parser = new Parser();
 
 /**
@@ -49,20 +49,22 @@ export const fetchRssData = async () => {
     }),
   );
 
-  return flatten(feedData) as FeedResType[];
+  return flatten(feedData) as DetailFeedType[];
 };
 
-interface uniqFeedMessageParams {
+interface uniqFeedMessageParams<T> {
   currentFeedData: FeedResType[];
   originData: any[];
   preUrlsSet: Set<string>;
+  formatDataFn?: (data: FeedResType[]) => T
 }
 
-export const uniqFeedMessage = async ({
+export const uniqFeedMessage = async <T>({
   currentFeedData,
   originData,
   preUrlsSet,
-}: uniqFeedMessageParams) => {
+  formatDataFn
+}: uniqFeedMessageParams<T>) => {
   const mergedData = uniqBy(
     [...currentFeedData, ...originData],
     (item) => item.link,
@@ -71,7 +73,12 @@ export const uniqFeedMessage = async ({
   const currentNoticeData = currentFeedData.filter(
     (item) => !preUrlsSet.has(item.link),
   );
-  const feishuPostMessage = currentNoticeData
+
+  if (formatDataFn) {
+    const postMessage = formatDataFn(currentNoticeData)
+    return [mergedData, postMessage] as const
+  }
+  const postMessage = currentNoticeData
     .map((item, index) => ({
       tag: "a",
       text: `${index + 1} : ${item.title}`,
@@ -79,7 +86,7 @@ export const uniqFeedMessage = async ({
     }))
     .map((item) => [item]);
 
-  return [mergedData, feishuPostMessage];
+  return [mergedData, postMessage] as const;
 };
 
 export const noticeFeishuRobot = async (
