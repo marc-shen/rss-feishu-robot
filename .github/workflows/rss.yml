@@ -1,0 +1,33 @@
+name: update rss feed
+
+on:
+  schedule:
+    - cron: "0 10 * * *"
+
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  update-rss:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - run: npm install
+      - run: npm run start
+      - run: npm run gen-html
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update RSS
+          branch: main
+          commit_author: maidang1 <497350746@qq.com>
+          push_options: '--force-with-lease'
