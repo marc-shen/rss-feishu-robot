@@ -96,6 +96,7 @@ export const noticeFeishuRobot = async (
     href: string;
   }[][],
 ) => {
+  if (isEmpty(message)) return
   sendPostMessage(message);
 };
 

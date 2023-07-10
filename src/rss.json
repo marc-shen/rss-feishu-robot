@@ -6,5 +6,9 @@
   {
     "name": "JavascriptWeekly",
     "url": "https://cprss.s3.amazonaws.com/javascriptweekly.com.xml"
+  },
+  {
+    "name":"Max",
+    "url":"https://mxstbr.com/rss"
   }
 ]
