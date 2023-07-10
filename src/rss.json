@@ -2,5 +2,9 @@
   {
     "name": "Sukka",
     "url": "https://blog.skk.moe/atom.xml"
+  },
+  {
+    "name": "JavascriptWeekly",
+    "url": "https://cprss.s3.amazonaws.com/javascriptweekly.com.xml"
   }
 ]
