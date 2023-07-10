@@ -21,10 +21,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: 'npm'
-      - run: npm install
-      - run: npm run start
-      - run: npm run gen-html
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm run start
+      - run: pnpm run gen-html
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update RSS
