@@ -18,5 +18,9 @@
   {
     "name":"README Project",
     "url":"https://feeds.simplecast.com/ioCY0vfY"
+  },
+  {
+    "name":"React Status",
+    "url":"https://cprss.s3.amazonaws.com/react.statuscode.com.xml"
   }
 ]
