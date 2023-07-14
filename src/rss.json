@@ -14,5 +14,9 @@
   {
     "name": "MDN",
     "url": "https://developer.mozilla.org/en-US/blog/rss.xml"
+  },
+  {
+    "name":"README Project",
+    "url":"https://feeds.simplecast.com/ioCY0vfY"
   }
 ]
