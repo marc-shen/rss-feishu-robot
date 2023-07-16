@@ -3,3 +3,4 @@ export const FEISHU_ROBOT_CALLBACK_URL =
 export const SAVED_DATA_PATH_NAME = "rss-fetched-data.json";
 export const ORIGIN_FEED_DATA_PATH_NAME = "rss.json";
 export const SAVE_FEED_MARKDOWN_PATH_NAME = "rss.md";
+export const DATABASE_TABLE_NAME = 'rss'

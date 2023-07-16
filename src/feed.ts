@@ -1,27 +1,20 @@
 import fs from "fs-extra";
 import path from "path";
-import { SAVED_DATA_PATH_NAME, ORIGIN_FEED_DATA_PATH_NAME } from "./constance";
+import { ORIGIN_FEED_DATA_PATH_NAME } from "./constance";
 import { flatten, isEmpty, uniqBy } from "lodash";
 import Parser from "rss-parser";
 import { sendPostMessage } from "./robots/feishu-robot";
+import { DetailFeedType, FeedDataType, FeedResType } from "./types/global";
+import { getRssData } from "./data-base";
 const parser = new Parser();
 
 /**
  * @description 获取之前保存的数据,为了推送的时候去重
  */
-export const getSavedData = () => {
-  let preUrlsSet = new Set<string>();
-  let originData: DetailFeedType[] = [];
-  const preDataPath = path.join(__dirname, `./${SAVED_DATA_PATH_NAME}`);
-  if (fs.existsSync(preDataPath)) {
-    const data = JSON.parse(
-      fs.readFileSync(preDataPath, "utf8") || "[]",
-    ) as DetailFeedType[];
-    const urls = data.map((item) => item.link);
-    preUrlsSet = new Set(urls);
-    originData = data;
-  }
-  return { preUrlsSet, originData };
+export const getSavedData = async () => {
+  const preData = await getRssData()
+  const preUrlsSet = new Set<string>(preData.map(({ link }) => link));
+  return { preUrlsSet, originData: preData }
 };
 
 /**
@@ -65,18 +58,13 @@ export const uniqFeedMessage = async <T>({
   preUrlsSet,
   formatDataFn
 }: uniqFeedMessageParams<T>) => {
-  const mergedData = uniqBy(
-    [...currentFeedData, ...originData],
-    (item) => item.link,
-  );
-
   const currentNoticeData = currentFeedData.filter(
     (item) => !preUrlsSet.has(item.link),
   );
 
   if (formatDataFn) {
     const postMessage = formatDataFn(currentNoticeData)
-    return [mergedData, postMessage] as const
+    return [currentNoticeData, postMessage] as const
   }
   const postMessage = currentNoticeData
     .map((item, index) => ({
@@ -86,7 +74,7 @@ export const uniqFeedMessage = async <T>({
     }))
     .map((item) => [item]);
 
-  return [mergedData, postMessage] as const;
+  return [currentNoticeData, postMessage] as const;
 };
 
 export const noticeFeishuRobot = async (
@@ -100,6 +88,4 @@ export const noticeFeishuRobot = async (
   sendPostMessage(message);
 };
 
-export const writeFeedData = (data: string) => {
-  fs.writeFileSync(path.join(__dirname, `./${SAVED_DATA_PATH_NAME}`), data);
-};
+

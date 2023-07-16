@@ -1,5 +1,6 @@
 import axios from "axios";
 import { FEISHU_ROBOT_CALLBACK_URL } from "../constance";
+import { FeedResType } from "../types/global";
 
 const instance = axios.create({ baseURL: FEISHU_ROBOT_CALLBACK_URL });
 

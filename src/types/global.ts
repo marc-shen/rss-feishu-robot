@@ -1,14 +1,14 @@
-declare interface FeedDataType {
+export interface FeedDataType {
   name: string;
   url: string;
 }
 
-declare interface FeedResType {
+export interface FeedResType {
   title: string;
   link: string;
 }
 
-declare interface DetailFeedType {
+export interface DetailFeedType {
   title: string;
   link: string;
   pubDate: string;
@@ -19,7 +19,7 @@ declare interface DetailFeedType {
   isoDate: string;
 }
 
-declare interface FormatDataType {
+export interface FormatDataType {
   tag: string;
   text: string;
   href: string;
