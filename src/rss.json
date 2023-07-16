@@ -22,5 +22,9 @@
   {
     "name":"React Status",
     "url":"https://cprss.s3.amazonaws.com/react.statuscode.com.xml"
+  },
+  {
+    "name":"mdh",
+    "url":"https://mdhweekly.com/rss.xml"
   }
 ]
