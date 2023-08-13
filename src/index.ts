@@ -18,6 +18,6 @@ import { FormatDataType } from "./types/global";
   });
 
   insertData(mergedData);
-  noticeFeishuRobot(feishuPostMessage)
+  // noticeFeishuRobot(feishuPostMessage)
 })();
 console.log(process.env)
