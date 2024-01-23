@@ -26,5 +26,9 @@
   {
     "name":"mdh",
     "url":"https://mdhweekly.com/rss.xml"
+  },
+  {
+    "name":"arxiv",
+    "url":"http://arxiv.org/rss/astro-ph.HE"
   }
 ]
